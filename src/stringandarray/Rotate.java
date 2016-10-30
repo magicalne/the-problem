@@ -3,7 +3,7 @@ package stringandarray;
 /**
  * Created by magiclane on 30/10/2016.
  *
- * 1.5
+ * 1.6
  */
 public class Rotate {
 
