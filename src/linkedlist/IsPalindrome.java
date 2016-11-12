@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.Stack;
+
 /**
  * Created by magiclane on 08/11/2016.
  *
@@ -39,12 +41,49 @@ public class IsPalindrome {
         return n == null && r == null;
     }
 
+    private boolean isPalindrome2(Node n) {
+        if (n == null || n.next == null) return true;
+
+        Node p1 = n, p2 = n;
+        int len = 1;
+        while (p1.next != null && p2.next != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+            if (p2.next != null) {
+                p2 = p2.next;
+                len ++;
+            }
+            len ++;
+        }
+
+        Stack<Integer> stack = new Stack<>();
+        if (len % 2 != 0) {
+            p1 = p1.next;
+        }
+
+        while (p1 != null) {
+            stack.push(p1.data);
+            p1 = p1.next;
+        }
+
+        p2 = n;
+        while (!stack.empty()) {
+            if (stack.pop() != p2.data) {
+                return false;
+            }
+            p2 = p2.next;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         Node node = new Node(0);
         node.appendToTail(1);
-        node.appendToTail(1);
+        node.appendToTail(0);
+        node.appendToTail(0);
         System.out.println(node);
         IsPalindrome isPalindrome = new IsPalindrome();
-        System.out.println(isPalindrome.isPalindrome(node));
+        System.out.println(isPalindrome.isPalindrome2(node));
     }
 }
