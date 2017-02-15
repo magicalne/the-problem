@@ -29,5 +29,7 @@ public class InsertNToM {
         InsertNToM insertNToM = new InsertNToM();
         System.out.println(Integer.toBinaryString(insertNToM.insert(m, n, i, j)));
 
+
+        System.out.println(2>>>16);
     }
 }
